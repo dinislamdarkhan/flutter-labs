@@ -2,7 +2,7 @@
 Cross-platform Applications Development course (Flutter) homework exercises
 
 ## Lab6 - Text widget "Hello Flutter"
-![Demo](lab6/lab6.gif)
+![Demo](lab6/lab6.png)
 
 ## Midterm - iOS calculator clone
 ![Demo](midterm_calculator/calculator.gif)
