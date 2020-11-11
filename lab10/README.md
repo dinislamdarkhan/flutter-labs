@@ -3,4 +3,4 @@
 System for booking tickets for intercity transportation
 
 ## Bus booking system
-![Demo](lab10final.gif)
+![Demo](lab10.gif)
