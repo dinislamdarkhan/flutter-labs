@@ -1,4 +1,4 @@
-import 'package:lab11/busline.dart';
+import 'package:lab11/data/busline.dart';
 
 List<BusLine> busList = [
   BusLine(
