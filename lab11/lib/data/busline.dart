@@ -1,4 +1,5 @@
 class BusLine {
+  int id;
   String name;
   String from;
   String to;
@@ -9,7 +10,8 @@ class BusLine {
   String icon;
 
   BusLine(
-      {this.name,
+      {this.id,
+      this.name,
       this.from,
       this.to,
       this.fromDateTime,

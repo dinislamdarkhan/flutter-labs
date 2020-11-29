@@ -4,8 +4,11 @@ import 'package:lab11/data/app_data.dart';
 import 'package:lab11/widgets/appbar.dart';
 import 'package:lab11/widgets/bus_card.dart';
 import 'package:lab11/widgets/custom_drawer.dart';
+import 'package:lab11/widgets/text_widget.dart';
 
 class SchedulePage extends StatefulWidget {
+  static const routeSchedule = '/schedule';
+  static const routePassenger = '/passenger_choice';
   bool isSchedule;
 
   SchedulePage({Key key, this.isSchedule = true}) : super(key: key);
@@ -17,8 +20,7 @@ class SchedulePage extends StatefulWidget {
 class SchedulePageState extends State<SchedulePage> {
   Widget deleteDialog(bus) {
     return AlertDialog(
-        content: Text("Вы хотите удалить этот рейс?",
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 21.0)),
+        content: textWidget("Вы хотите удалить этот рейс?", 21.0),
         actions: [
           dialogButton("НЕТ", false, null),
           dialogButton("ДА", true, bus)
@@ -27,11 +29,7 @@ class SchedulePageState extends State<SchedulePage> {
 
   Widget dialogButton(text, isDelete, bus) {
     return FlatButton(
-        child: Text(text,
-            style: TextStyle(
-                color: Colors.green,
-                fontWeight: FontWeight.w500,
-                fontSize: 18.0)),
+        child: textWidget(text, 18.0, FontWeight.w500, Colors.green),
         onPressed: () {
           if (isDelete) setState(() => busList.remove(bus));
           Navigator.of(context).pop();
@@ -40,18 +38,19 @@ class SchedulePageState extends State<SchedulePage> {
 
   Widget floatingActionButton() {
     if (widget.isSchedule) {
-      return FlatButton(
-          onPressed: () {},
-          child: Container(
-              margin: EdgeInsets.fromLTRB(0, 00, 0, 50),
-              decoration: BoxDecoration(
-                  color: Colors.green, borderRadius: BorderRadius.circular(20)),
-              padding: EdgeInsets.symmetric(vertical: 17, horizontal: 105),
-              child: Text('Добавить рейс',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.w400))));
+      return Container(
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
+          width: MediaQuery.of(context).size.width * 0.85,
+          height: MediaQuery.of(context).size.width * 0.15,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: OutlinedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0))),
+            child: textWidget(
+                'ДОБАВИТЬ РЕЙС', 22.0, FontWeight.w400, Colors.white),
+          ));
     } else {
       return null;
     }

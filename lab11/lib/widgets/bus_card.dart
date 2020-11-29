@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:lab11/data/busline.dart';
+import 'package:lab11/pages/passenger_page.dart';
 import 'package:lab11/widgets/text_widget.dart';
 
 class BusCard extends StatelessWidget {
@@ -22,7 +23,8 @@ class BusCard extends StatelessWidget {
             InkWell(
               onTap: () => isSchedule
                   ? null
-                  : Navigator.pushNamed(context, '/passenger'),
+                  : Navigator.pushNamed(context, PassengerPage.routeName,
+                      arguments: bus),
               enableFeedback: !isSchedule,
               splashColor: Colors.transparent,
               child: Row(
@@ -35,11 +37,18 @@ class BusCard extends StatelessWidget {
                           child: Image.asset('assets/${bus.icon}',
                               fit: BoxFit.fitHeight, width: 150, height: 200)),
                       SizedBox(height: 5),
-                      textWidget(bus.name, 20.0),
+                      textWidget(bus.name, 20.0, FontWeight.w600),
                       SizedBox(height: 5),
-                      textWidget(bus.carNumber, 18.0),
-                      SizedBox(height: 5),
-                      textWidget(bus.seatNumber.toString() + ' мест', 18.0)
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              margin: EdgeInsets.fromLTRB(10, 0, 20, 5),
+                              width: 60.0,
+                              child: textWidget(bus.carNumber, 18.0)),
+                          textWidget(bus.seatNumber.toString() + ' мест', 18.0)
+                        ],
+                      ),
                     ]),
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.center,

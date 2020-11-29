@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab11/pages/schedule_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -48,8 +49,9 @@ class CustomDrawer extends StatelessWidget {
       _listTile('Автобусы', Icon(Icons.departure_board), ''),
       _listTile('Статистика', Icon(Icons.equalizer), ''),
       _listTile('Пассажиры', Icon(Icons.airline_seat_recline_extra),
-          '/passenger_choice'),
-      _listTile('Расписание', Icon(Icons.date_range), '/schedule'),
+          SchedulePage.routePassenger),
+      _listTile(
+          'Расписание', Icon(Icons.date_range), SchedulePage.routeSchedule),
       _listTile('История', Icon(Icons.library_books), ''),
       _listTile('Настройки', Icon(Icons.settings), ''),
     ]));

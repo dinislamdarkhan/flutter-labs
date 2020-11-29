@@ -1,8 +1,10 @@
 class Passenger {
+  int busId;
   String name;
-  String seatNumber;
-  String seatType;
-  String type;
+  int seatNumber;
+  bool isTopSeat;
+  bool isOnline;
 
-  Passenger({this.name, this.seatNumber, this.seatType, this.type});
+  Passenger(
+      this.busId, this.name, this.seatNumber, this.isTopSeat, this.isOnline);
 }
