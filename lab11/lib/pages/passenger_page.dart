@@ -21,23 +21,22 @@ class PassengerPageState extends State<PassengerPage> {
     for (int i = 0; i < widget.bus.seatNumber; i++) {
       int curSize = seatList.where((e) => e.busId == widget.bus.id).length;
       if (curSize >= widget.bus.seatNumber) break;
-      // for (Passenger p in seatList){
-      //   if(p.seatNumber == i){
-      //     if(p.isTopSeat)
-      //   }
-      // }
-      if (seatList.where((e) => e.seatNumber == i && e.isTopSeat) == null) {
+      seatList.add(Passenger(widget.bus.id, 'Нет имени', i, false, null));
+      curSize = seatList.where((e) => e.busId == widget.bus.id).length;
+      if (curSize < widget.bus.seatNumber)
         seatList.add(Passenger(widget.bus.id, 'Нет имени', i, true, null));
-      } else if (seatList.where((e) => e.seatNumber == i && !e.isTopSeat) ==
-          null) {
-        seatList.add(Passenger(widget.bus.id, 'Нет имени', i, false, null));
-      } else {
-        seatList.add(Passenger(widget.bus.id, 'Нет имени', i, false, null));
-        curSize = seatList.where((e) => e.busId == widget.bus.id).length;
-        if (curSize < widget.bus.seatNumber)
-          seatList.add(Passenger(widget.bus.id, 'Нет имени', i, true, null));
-      }
     }
+    List<Passenger> removeList = [];
+    seatList.where((e) => e.isOnline != null).forEach((i) {
+      seatList.forEach((j) {
+        if (i.seatNumber == j.seatNumber &&
+            i.isTopSeat == j.isTopSeat &&
+            j.isOnline == null) {
+          removeList.add(j);
+        }
+      });
+    });
+    seatList.removeWhere((e) => removeList.contains(e));
     super.initState();
   }
 

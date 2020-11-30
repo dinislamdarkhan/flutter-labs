@@ -45,7 +45,7 @@ class SchedulePageState extends State<SchedulePage> {
           child: ElevatedButton(
             onPressed: () {},
             style: OutlinedButton.styleFrom(
-                backgroundColor: Colors.green,
+                // backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0))),
             child: textWidget(
