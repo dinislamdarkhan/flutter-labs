@@ -2,5 +2,5 @@
 
 Mobile shop app for Final session
 
-## Bus booking system
+## Shop app
 ![Demo](final_demo.gif)
