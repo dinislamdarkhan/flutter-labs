@@ -4,7 +4,6 @@ import 'package:lab12/data/busline.dart';
 import 'package:lab12/pages/passenger_page.dart';
 import 'package:lab12/widgets/text_widget.dart';
 
-
 class BusCard extends StatelessWidget {
   final BusLine bus;
   final Function delete;
@@ -37,7 +36,8 @@ class BusCard extends StatelessWidget {
                           child: Image.asset('assets/${bus.icon}',
                               fit: BoxFit.fitHeight, width: 150, height: 200)),
                       SizedBox(height: 5),
-                      textWidget(bus.name, 20.0, FontWeight.w600),
+                      textWidget(bus.name,
+                          fontSize: 20.0, weight: FontWeight.w600),
                       SizedBox(height: 5),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,18 +45,20 @@ class BusCard extends StatelessWidget {
                           Container(
                               margin: EdgeInsets.fromLTRB(10, 0, 20, 5),
                               width: 60.0,
-                              child: textWidget(bus.carNumber, 18.0)),
-                          textWidget(bus.seatNumber.toString() + ' мест', 18.0)
+                              child: textWidget(bus.carNumber, fontSize: 18.0)),
+                          textWidget(bus.seatNumber.toString() + ' мест',
+                              fontSize: 18.0)
                         ],
                       ),
                     ]),
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          textWidget(bus.from + ' -', 24.0),
-                          textWidget(bus.to, 24.0),
+                          textWidget(bus.from + ' -', fontSize: 24.0),
+                          textWidget(bus.to, fontSize: 24.0),
                           SizedBox(height: 15),
-                          textWidget('Отправление', 20.0, FontWeight.bold),
+                          textWidget('Отправление',
+                              fontSize: 20.0, weight: FontWeight.bold),
                           SizedBox(height: 5),
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,16 +67,17 @@ class BusCard extends StatelessWidget {
                                     'Дата  -  ' +
                                         DateFormat('dd.MM.yyyy E')
                                             .format(bus.fromDateTime),
-                                    18.0),
+                                    fontSize: 18.0),
                                 SizedBox(height: 5),
                                 textWidget(
                                     'Время  -  ' +
                                         DateFormat('HH:mm')
                                             .format(bus.fromDateTime),
-                                    18.0)
+                                    fontSize: 18.0)
                               ]),
                           SizedBox(height: 15),
-                          textWidget('Прибытие', 20.0, FontWeight.bold),
+                          textWidget('Прибытие',
+                              fontSize: 20.0, weight: FontWeight.bold),
                           SizedBox(height: 5),
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,13 +87,13 @@ class BusCard extends StatelessWidget {
                                     'Дата  -  ' +
                                         DateFormat('dd.MM.yyyy E')
                                             .format(bus.toDateTime),
-                                    18.0),
+                                    fontSize: 18.0),
                                 SizedBox(height: 5),
                                 textWidget(
                                     'Время  -  ' +
                                         DateFormat('HH:mm')
                                             .format(bus.toDateTime),
-                                    18.0)
+                                    fontSize: 18.0)
                               ])
                         ])
                   ]),

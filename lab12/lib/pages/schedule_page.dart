@@ -20,7 +20,7 @@ class SchedulePage extends StatefulWidget {
 class SchedulePageState extends State<SchedulePage> {
   Widget deleteDialog(bus) {
     return AlertDialog(
-        content: textWidget("Вы хотите удалить этот рейс?", 21.0),
+        content: textWidget("Вы хотите удалить этот рейс?", fontSize: 21.0),
         actions: [
           dialogButton("НЕТ", false, null),
           dialogButton("ДА", true, bus)
@@ -29,7 +29,8 @@ class SchedulePageState extends State<SchedulePage> {
 
   Widget dialogButton(text, isDelete, bus) {
     return FlatButton(
-        child: textWidget(text, 18.0, FontWeight.w500, Colors.green),
+        child: textWidget(text,
+            fontSize: 18.0, weight: FontWeight.w500, color: Colors.green),
         onPressed: () {
           if (isDelete) setState(() => busList.remove(bus));
           Navigator.of(context).pop();
@@ -48,8 +49,8 @@ class SchedulePageState extends State<SchedulePage> {
                 // backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0))),
-            child: textWidget(
-                'ДОБАВИТЬ РЕЙС', 22.0, FontWeight.w400, Colors.white),
+            child: textWidget('ДОБАВИТЬ РЕЙС',
+                fontSize: 22.0, weight: FontWeight.w400, color: Colors.white),
           ));
     } else {
       return null;

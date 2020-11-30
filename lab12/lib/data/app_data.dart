@@ -1,5 +1,5 @@
 import 'package:lab12/data/busline.dart';
-import 'package:lab12/data/passenger.dart';
+import 'package:lab12/data/ticket.dart';
 
 List<BusLine> busList = [
   BusLine(
@@ -34,9 +34,9 @@ List<BusLine> busList = [
       icon: 'bus3.jpg'),
 ];
 
-List<Passenger> seatList = [
-  Passenger(0, 'Aigerim', 0, true, false),
-  Passenger(0, 'Arlan', 1, true, false),
-  Passenger(0, 'ASSEL', 1, false, true),
-  Passenger(0, 'TEMIRLAN', 2, true, true),
+List<Ticket> seatList = [
+  Ticket(0, 'Aigerim', '77079282498', 'Почта', '3000', 0, true, false),
+  Ticket(0, 'Arlan', '77079282498', 'Почта', '3000', 1, true, false),
+  Ticket(0, 'ASSEL', '77079282498', 'Телефон', '3000', 1, false, true),
+  Ticket(0, 'TEMIRLAN', '77079282498', 'Почта', '3000', 2, true, true),
 ];
