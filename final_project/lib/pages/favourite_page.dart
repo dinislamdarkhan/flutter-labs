@@ -7,6 +7,8 @@ import 'package:qolbuyim/widgets/home/product.dart';
 import 'package:qolbuyim/widgets/home/product_card.dart';
 
 class FavouritePage extends StatefulWidget {
+  static const routeName = '/favourite';
+
   const FavouritePage({Key key}) : super(key: key);
   @override
   _FavouritePageState createState() => _FavouritePageState();

@@ -1,22 +1,28 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qolbuyim/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:provider/provider.dart';
+import 'package:qolbuyim/pages/login_page.dart';
+import 'package:qolbuyim/pages/main_page.dart';
+import 'package:qolbuyim/services/authentication_service.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 // ignore: camel_case_types
 class SignUpPage extends StatefulWidget {
+  static const routeName = '/sign_up';
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
   AuthService _auth = AuthService();
-
-  String email = '';
-
-  String password = '';
-
-  String name = '';
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController secondPasswordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget _skip() {
       return InkWell(
-        onTap: () => Navigator.pushNamed(context, '/home'),
+        onTap: () => Navigator.pushNamed(context, MainPage.routeName),
         child: Text(
           'Skip for now',
           style: GoogleFonts.roboto(
@@ -42,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget _alternateLogin() {
       return InkWell(
-        onTap: () => Navigator.pushNamed(context, '/login'),
+        onTap: () => Navigator.pushNamed(context, LoginPage.routeName),
         child: Text(
           'Already have an account ? Login',
           style: GoogleFonts.roboto(
@@ -60,9 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
       return Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         child: TextFormField(
-            onChanged: (val) {
-              setState(() => email = val);
-            },
+            controller: emailController,
             decoration: new InputDecoration(
               labelText: "Enter Email",
               fillColor: Colors.white,
@@ -80,9 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
         margin: EdgeInsets.symmetric(vertical: 10),
         child: TextFormField(
             obscureText: true,
-            onChanged: (val) {
-              setState(() => password = val);
-            },
+            controller: passwordController,
             cursorColor: Colors.white,
             decoration: new InputDecoration(
               labelText: "Enter Password",
@@ -100,6 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
         margin: EdgeInsets.symmetric(vertical: 10),
         child: TextFormField(
             obscureText: true,
+            controller: secondPasswordController,
             decoration: new InputDecoration(
               labelText: "Repeat Password",
               focusColor: Colors.white,
@@ -116,9 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
       return Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         child: TextFormField(
-            onChanged: (val) {
-              setState(() => name = val);
-            },
+            controller: nameController,
             decoration: new InputDecoration(
               labelText: "Enter Full Name",
               fillColor: Colors.white,
@@ -146,17 +147,43 @@ class _SignUpPageState extends State<SignUpPage> {
       );
     }
 
+    void _showDialog(text) {
+      // flutter defined function
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          return AlertDialog(
+            title: new Text("Error"),
+            content: new Text(text),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text("Close"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     Widget _button() {
       return FlatButton(
         onPressed: () async {
-          dynamic result =
-              await _auth.signupWithEmailAndPassword(email, password, name);
+          if(secondPasswordController.text.trim() == passwordController.text.trim()){
+            dynamic result =
+            await _auth.signupWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim(), nameController.text.trim());
 
-          if (result == null) {
-            print('error');
-          } else {
-            print(result.toString());
-            Navigator.pushNamed(context, '/home');
+            if (result == null) {
+              _showDialog("Email already exists");
+            } else {
+              print(result.toString());
+              Navigator.pushNamed(context, MainPage.routeName);
+            }
+          } else{
+            _showDialog("Password not equal");
           }
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),

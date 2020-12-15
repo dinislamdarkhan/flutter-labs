@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolbuyim/pages/third_welcome.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 // ignore: camel_case_types
 class SecondWelcome extends StatelessWidget {
+  static const routeName = '/second_welcome';
   @override
   Widget build(BuildContext context) {
     Widget _logo() {
@@ -85,7 +87,7 @@ class SecondWelcome extends StatelessWidget {
     Widget _button() {
       return FlatButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/third_welcome');
+          Navigator.pushNamed(context, ThirdWelcome.routeName);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: AppTheme.mainColor,

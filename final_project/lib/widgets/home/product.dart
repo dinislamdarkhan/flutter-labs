@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolbuyim/pages/product_list_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 Widget productCard(BuildContext context, DocumentSnapshot document){
   return InkWell(
   onTap: () => {
-    Navigator.pushNamed(context, '/detail', arguments: document)
+    Navigator.pushNamed(context, ProductListPage.routeName, arguments: document)
   },
     child: Container(
       decoration: BoxDecoration(

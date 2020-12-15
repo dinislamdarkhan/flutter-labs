@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qolbuyim/models/data.dart';
 import 'package:qolbuyim/models/product.dart';
+import 'package:qolbuyim/pages/home_page.dart';
+import 'package:qolbuyim/pages/main_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class BasketPage extends StatefulWidget {
+  static const routeName = '/basket';
+
   const BasketPage({Key key}) : super(key: key);
 
   @override
@@ -142,7 +146,7 @@ class _BasketPageState extends State<BasketPage> {
   Widget _submitButton(BuildContext context) {
     return FlatButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/home');
+          Navigator.pushNamed(context, MainPage.routeName);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         child: Container(

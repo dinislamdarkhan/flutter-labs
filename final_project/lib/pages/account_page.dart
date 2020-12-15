@@ -1,10 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qolbuyim/services/auth.dart';
+import 'package:qolbuyim/pages/start_page.dart';
+import 'package:qolbuyim/services/authentication_service.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
+import 'package:provider/provider.dart';
 
 class AccountPage extends StatefulWidget {
+  static const routeName = '/user';
+
   AccountPage({Key key}) : super(key: key);
 
   @override
@@ -25,7 +28,7 @@ class _AccountPageState extends State<AccountPage> {
                 FlatButton(
                   onPressed: () async {
                     await _auth.signOut();
-                    Navigator.pushNamed(context, '/');
+                    Navigator.pushNamed(context, WelcomePage.routeName);
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),

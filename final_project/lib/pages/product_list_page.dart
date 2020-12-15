@@ -4,6 +4,8 @@ import 'package:qolbuyim/utils/app_theme.dart';
 import 'package:qolbuyim/widgets/home/product.dart';
 
 class ProductListPage extends StatefulWidget {
+  static const routeName = '/product_list';
+
   @override
   _ProductListPageState createState() => _ProductListPageState();
 }

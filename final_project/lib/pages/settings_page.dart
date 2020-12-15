@@ -1,7 +1,10 @@
 import 'package:division/division.dart';
 import 'package:flutter/material.dart';
+import 'package:qolbuyim/pages/account_page.dart';
 
 class SettingsPage extends StatelessWidget {
+  static const routeName = '/settings';
+
   SettingsPage({Key key}) : super(key: key);
   final contentStyle = (BuildContext context) => ParentStyle()
     ..overflow.scrollable()
@@ -25,7 +28,7 @@ class SettingsPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/user_page'),
+                  onTap: () => Navigator.pushNamed(context, AccountPage.routeName),
                   child: UserCard()),
               ActionsRow(),
               Settings(),

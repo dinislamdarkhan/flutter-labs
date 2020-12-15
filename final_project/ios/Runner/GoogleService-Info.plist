@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>888612217536-eu4ongf7m2pfb81qbt9i2kfkpdvmmjpr.apps.googleusercontent.com</string>
+	<string>951980048108-b8oa2mqo3herfonukce2fjplh1mtpeja.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.888612217536-eu4ongf7m2pfb81qbt9i2kfkpdvmmjpr</string>
+	<string>com.googleusercontent.apps.951980048108-b8oa2mqo3herfonukce2fjplh1mtpeja</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBgHdCwdmVx75fmv7wkkjJMj62VQEXn4fg</string>
+	<string>AIzaSyAoAnPVoCwc7xRDE9TpZeEUkz7A98aHshc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>888612217536</string>
+	<string>951980048108</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.qolbuyim</string>
 	<key>PROJECT_ID</key>
-	<string>sampleproject-60097</string>
+	<string>qolbuyim</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sampleproject-60097.appspot.com</string>
+	<string>qolbuyim.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:888612217536:ios:1609f56cbf39601b470325</string>
-	<key>DATABASE_URL</key>
-	<string>https://sampleproject-60097.firebaseio.com</string>
+	<string>1:951980048108:ios:0f22045c5756147bad6fc9</string>
 </dict>
 </plist>

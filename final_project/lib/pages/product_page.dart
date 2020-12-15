@@ -2,9 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:qolbuyim/models/data.dart';
 import 'package:qolbuyim/models/product.dart';
+import 'package:qolbuyim/pages/basket_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class ProductPage extends StatefulWidget {
+  static const routeName = '/product';
+
   ProductPage({Key key}) : super(key: key);
 
   @override
@@ -128,13 +131,8 @@ class _ProductPageState extends State<ProductPage>
         width: 250.0,
         height: 250.0,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(args['image']),
-            fit: BoxFit.contain
-          ),
+        child: Image.network(args['image']),
         ),
-    )
     );
   }
 
@@ -418,7 +416,7 @@ class _ProductPageState extends State<ProductPage>
             isliked: false,
             image: args['image'],
             category: args['category']));
-        Navigator.pushNamed(context, '/basket');
+        Navigator.pushNamed(context, BasketPage.routeName);
       },
       backgroundColor: AppTheme.mainColor,
       child:

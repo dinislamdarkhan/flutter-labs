@@ -1,26 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qolbuyim/models/user.dart';
-import 'package:qolbuyim/pages/after_reg.dart';
-import 'package:qolbuyim/pages/auth_page.dart';
-import 'package:qolbuyim/pages/basket_page.dart';
-import 'package:qolbuyim/pages/category_page.dart';
-import 'package:qolbuyim/pages/favourite_page.dart';
-import 'package:qolbuyim/pages/first_welcome.dart';
-import 'package:qolbuyim/pages/login_page.dart';
-import 'package:qolbuyim/pages/main.dart';
-import 'package:qolbuyim/pages/product_list_page.dart';
-import 'package:qolbuyim/pages/product_page.dart';
-import 'package:qolbuyim/pages/second_welcome.dart';
-import 'package:qolbuyim/pages/settings_page.dart';
-import 'package:qolbuyim/pages/signup_page.dart';
+import 'package:qolbuyim/pages/main_page.dart';
 import 'package:qolbuyim/pages/start_page.dart';
-import 'package:qolbuyim/pages/third_welcome.dart';
-import 'package:qolbuyim/pages/user_page.dart';
-import 'package:qolbuyim/services/auth.dart';
+import 'package:qolbuyim/services/authentication_service.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
+import 'package:qolbuyim/utils/route_generator.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -31,29 +24,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          initialRoute: AuthService().user == null ? '/' : '/home',
-          routes: {
-            '/': (context) => WelcomePage(),
-            '/first_welcome': (context) => FirstWelcome(),
-            '/second_welcome': (context) => SecondWelcome(),
-            '/third_welcome': (context) => ThirdWelcome(),
-            '/auth': (context) => AuthPage(),
-            '/login': (context) => LoginPage(),
-            '/sign_up': (context) => SignUpPage(),
-            '/home': (context) => MainPage(),
-            '/category': (context) => CategoryPage(),
-            '/basket': (context) => BasketPage(),
-            '/user_page': (context) => AccountPage(),
-            //          '/favourite': (context) => ChooseLocation(),
-            '/settings': (context) => SettingsPage(),
-            //          '/chat': (context) => ChooseLocation(),
-            //          '/product': (context) => ChooseLocation(),
-            '/detail': (context) => ProductPage(),
-            //          '/welcome': (context) => ChooseLocation(),
-            '/after_reg': (context) =>QuestionPage(),
-            '/product_list': (context) => ProductListPage(),
-            '/favourite': (context) => FavouritePage(),
-          }),
-    );
+          initialRoute: AuthService().user == null ? WelcomePage.routeName : MainPage.routeName,
+          onGenerateRoute: RouteGenerator.generateRoute
+    ),
+         );
   }
 }

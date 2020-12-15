@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolbuyim/pages/main_page.dart';
+import 'package:qolbuyim/pages/second_welcome.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 // ignore: camel_case_types
 class FirstWelcome extends StatelessWidget {
+  static const routeName = '/first_welcome';
   @override
   Widget build(BuildContext context) {
     Widget _logo() {
@@ -17,7 +20,7 @@ class FirstWelcome extends StatelessWidget {
     Widget _skip() {
       return InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/home');
+          Navigator.pushNamed(context, MainPage.routeName);
         },
         child: Text(
           'Skip for now',
@@ -88,7 +91,7 @@ class FirstWelcome extends StatelessWidget {
     Widget _button() {
       return FlatButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/second_welcome');
+          Navigator.pushNamed(context, SecondWelcome.routeName);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: AppTheme.mainColor,

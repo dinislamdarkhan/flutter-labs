@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolbuyim/pages/home_page.dart';
+import 'package:qolbuyim/pages/login_page.dart';
+import 'package:qolbuyim/pages/main_page.dart';
+import 'package:qolbuyim/pages/signup_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class AuthPage extends StatelessWidget {
+  static const routeName = '/auth';
+
   @override
   Widget build(BuildContext context) {
     Widget _logo() {
@@ -19,7 +25,7 @@ class AuthPage extends StatelessWidget {
 
     Widget _skip() {
       return InkWell(
-        onTap: () => Navigator.pushNamed(context, '/home'),
+        onTap: () => Navigator.pushNamed(context, MainPage.routeName),
         child: Text(
           'Skip for now',
           style: GoogleFonts.roboto(
@@ -35,7 +41,7 @@ class AuthPage extends StatelessWidget {
 
     Widget _alternateLogin() {
       return InkWell(
-        onTap: () => Navigator.pushNamed(context, '/login'),
+        onTap: () => Navigator.pushNamed(context, LoginPage.routeName),
         child: Text(
           'Already have an account ? Login',
           style: GoogleFonts.roboto(
@@ -90,7 +96,7 @@ class AuthPage extends StatelessWidget {
     Widget _button() {
       return FlatButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/sign_up');
+          Navigator.pushNamed(context, SignUpPage.routeName);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: Colors.white,

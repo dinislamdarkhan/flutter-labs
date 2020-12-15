@@ -8,6 +8,8 @@ import 'package:qolbuyim/pages/settings_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class MainPage extends StatefulWidget {
+  static const routeName = '/main';
+
   MainPage({Key key}) : super(key: key);
 
   @override

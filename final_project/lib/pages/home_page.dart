@@ -11,6 +11,8 @@ import 'package:qolbuyim/widgets/home/product_card.dart';
 import 'package:qolbuyim/widgets/home/promo_widget.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/home';
+
   HomePage({Key key}) : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
       width: AppTheme.fullWidth(context),
       height: AppTheme.fullWidth(context) * .7,
       child: StreamBuilder(
-        stream: Firestore.instance.collection('products').snapshots(),
+        stream: FirebaseFirestore.instance.collection('products').snapshots(),
         builder: (context, snapshot) {
           if(!snapshot.hasData) return const Text("Loading");
           return GridView.builder(

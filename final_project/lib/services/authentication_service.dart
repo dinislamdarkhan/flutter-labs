@@ -1,21 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:qolbuyim/models/user.dart';
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
 
-  User _userFromFirebaseUser(FirebaseUser user) {
+  User _userFromFirebaseUser(auth.User user) {
     return user != null ? User(uid: user.uid) : null;
   }
 
   Stream<User> get user {
-    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
+    return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
   Future signInAnon() async {
     try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
+      auth.UserCredential result = await _auth.signInAnonymously();
+      auth.User user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -25,9 +25,9 @@ class AuthService {
 
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      auth.UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      auth.User user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -45,9 +45,9 @@ class AuthService {
   Future signupWithEmailAndPassword(
       String email, String password, String name) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
+      auth.UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      auth.User user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());

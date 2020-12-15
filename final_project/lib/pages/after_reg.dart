@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolbuyim/pages/second_welcome.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class QuestionPage extends StatefulWidget {
+  static const routeName = '/after_reg';
+
   @override
   _QuestionPageState createState() => _QuestionPageState();
 }
@@ -34,7 +37,7 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget _button() {
     return FlatButton(
       onPressed: () {
-        Navigator.pushNamed(context, '/second_welcome');
+        Navigator.pushNamed(context, SecondWelcome.routeName);
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       color: AppTheme.mainColor,

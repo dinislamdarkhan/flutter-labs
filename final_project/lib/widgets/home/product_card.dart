@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:qolbuyim/models/product.dart';
+import 'package:qolbuyim/pages/product_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class ProductCard extends StatefulWidget {
@@ -19,7 +20,7 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed('/detail', arguments: widget.document);
+        Navigator.of(context).pushNamed(ProductPage.routeName, arguments: widget.document);
         setState(() {
           // model.isSelected = !model.isSelected;
           //   AppData.productList.forEach((x) {

@@ -1,8 +1,11 @@
 import 'package:division/division.dart';
 import 'package:flutter/material.dart';
+import 'package:qolbuyim/pages/product_list_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class CategoryPage extends StatelessWidget {
+  static const routeName = '/category';
+
   const CategoryPage({Key key}) : super(key: key);
 
   @override
@@ -71,7 +74,7 @@ class _SettingsItemState extends State<SettingsItem> {
       style: settingsItemStyle(pressed),
       gesture: Gestures()
         ..isTap((isTapped) {
-          Navigator.pushNamed(context, '/product_list');
+          Navigator.pushNamed(context, ProductListPage.routeName);
           setState(() => pressed = isTapped);
         }),
       child: Row(

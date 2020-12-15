@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qolbuyim/pages/auth_page.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class ThirdWelcome extends StatelessWidget {
+  static const routeName = '/third_welcome';
   @override
   Widget build(BuildContext context) {
     Widget _logo() {
@@ -85,7 +87,7 @@ class ThirdWelcome extends StatelessWidget {
     Widget _button() {
       return FlatButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/auth');
+          Navigator.pushNamed(context, AuthPage.routeName);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: AppTheme.mainColor,

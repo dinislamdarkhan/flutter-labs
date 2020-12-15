@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "888612217536",
-    "firebase_url": "https://sampleproject-60097.firebaseio.com",
-    "project_id": "sampleproject-60097",
-    "storage_bucket": "sampleproject-60097.appspot.com"
+    "project_number": "951980048108",
+    "project_id": "qolbuyim",
+    "storage_bucket": "qolbuyim.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:888612217536:android:16c44d4a54300c78470325",
+        "mobilesdk_app_id": "1:951980048108:android:266532c8647f60b1ad6fc9",
         "android_client_info": {
           "package_name": "com.example.qolbuyim"
         }
       },
       "oauth_client": [
         {
-          "client_id": "888612217536-gmdhl6ihenq0s60rssh5nh0vsvvi03pg.apps.googleusercontent.com",
+          "client_id": "951980048108-kgprfqe1vtr8f0rkn18jq754b94jcone.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAzktlycWYypR2EcBmfkAFjFLL08Z5h7h0"
+          "current_key": "AIzaSyDQ484gDu4w_7L_JImfDLh1ecsVqdFmISk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "888612217536-gmdhl6ihenq0s60rssh5nh0vsvvi03pg.apps.googleusercontent.com",
+              "client_id": "951980048108-kgprfqe1vtr8f0rkn18jq754b94jcone.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "888612217536-gnpgdl3t3oa3iaq4m66c8iv73j19ocjo.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.comporition.SampleProject"
-              }
             }
           ]
         }

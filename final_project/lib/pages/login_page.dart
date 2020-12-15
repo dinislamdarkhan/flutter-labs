@@ -1,20 +1,23 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qolbuyim/services/auth.dart';
+import 'package:provider/provider.dart';
+import 'package:qolbuyim/pages/main_page.dart';
+import 'package:qolbuyim/pages/signup_page.dart';
+import 'package:qolbuyim/services/authentication_service.dart';
 import 'package:qolbuyim/utils/app_theme.dart';
 
 class LoginPage extends StatefulWidget {
+  static const routeName = '/login';
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   final AuthService _auth = AuthService();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  String email = '';
-
-  String password = '';
   String error = '';
 
   @override
@@ -27,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
 
     Widget _skip() {
       return InkWell(
-        onTap: () => Navigator.pushNamed(context, '/home'),
+        onTap: () => Navigator.pushNamed(context, MainPage.routeName),
         child: Text(
           'Skip for now',
           style: GoogleFonts.roboto(
@@ -43,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
 
     Widget _alternateLogin() {
       return InkWell(
-        onTap: () => Navigator.pushNamed(context, '/sign_up'),
+        onTap: () => Navigator.pushNamed(context, SignUpPage.routeName),
         child: Text(
           'Don’t have an account? Sign up',
           style: GoogleFonts.roboto(
@@ -61,9 +64,7 @@ class _LoginPageState extends State<LoginPage> {
       return Container(
         margin: EdgeInsets.all(10.0),
         child: TextFormField(
-            onChanged: (val) {
-              setState(() => email = val);
-            },
+            controller: emailController,
             cursorColor: Colors.white,
             style: TextStyle(
               color: Colors.white,
@@ -90,9 +91,7 @@ class _LoginPageState extends State<LoginPage> {
         margin: EdgeInsets.all(10.0),
         child: TextFormField(
             obscureText: true,
-            onChanged: (val) {
-              setState(() => password = val);
-            },
+            controller: passwordController,
             cursorColor: Colors.white,
             style: TextStyle(
               color: Colors.white,
@@ -175,10 +174,9 @@ class _LoginPageState extends State<LoginPage> {
         builder: (BuildContext context) {
           // return object of type Dialog
           return AlertDialog(
-            title: new Text("qwe"),
+            title: new Text("Error"),
             content: new Text("Wrong password or login"),
             actions: <Widget>[
-              // usually buttons at the bottom of the dialog
               new FlatButton(
                 child: new Text("Close"),
                 onPressed: () {
@@ -194,22 +192,17 @@ class _LoginPageState extends State<LoginPage> {
     Widget _button() {
       return FlatButton(
         onPressed: () async {
-          print(email);
-          print(password);
           dynamic result =
-              await _auth.signInWithEmailAndPassword(email, password);
+          await _auth.signInWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
           if (result == null) {
-            print('error');
-
             setState(() {
               _showDialog();
               error = 'Wrong email or password';
             });
           } else {
             print(result.toString());
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushNamed(context, MainPage.routeName);
           }
-//
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: Colors.white,
